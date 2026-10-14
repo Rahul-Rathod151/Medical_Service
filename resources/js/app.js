@@ -29,6 +29,7 @@ import {
     Edit, 
     Pencil, 
     Eye, 
+    EyeOff,
     LogOut, 
     Menu, 
     ArrowRight, 
@@ -73,6 +74,7 @@ export function initIcons() {
             Edit,
             Pencil,
             Eye,
+            EyeOff,
             LogOut,
             Menu,
             ArrowRight,
@@ -88,38 +90,48 @@ export function initIcons() {
     });
 }
 
-// Framer Motion Subtle Animations
+// Framer Motion Subtle Animations for Healthcare SaaS UI
 function initAnimations() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // Stagger KPI Cards Entrance
+    // 1. Staggered Entrance for KPI Metric Cards
     const kpiCards = document.querySelectorAll('.kpi-card');
     if (kpiCards.length > 0) {
         animate(
             kpiCards,
-            { opacity: [0, 1], y: [16, 0] },
-            { delay: stagger(0.06), duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+            { opacity: [0, 1], y: [14, 0] },
+            { delay: stagger(0.05), duration: 0.45, ease: [0.16, 1, 0.3, 1] }
         );
     }
 
-    // Table Rows Stagger Entrance
+    // 2. Staggered Entrance for Pipeline Funnel Cards
+    const funnelSteps = document.querySelectorAll('.funnel-step-item');
+    if (funnelSteps.length > 0) {
+        animate(
+            funnelSteps,
+            { opacity: [0, 1], y: [10, 0] },
+            { delay: stagger(0.04, { start: 0.1 }), duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+        );
+    }
+
+    // 3. Table Rows Subtle Stagger Reveal
     const tableRows = document.querySelectorAll('.enterprise-table tbody tr');
-    if (tableRows.length > 0 && tableRows.length <= 15) {
+    if (tableRows.length > 0 && tableRows.length <= 25) {
         animate(
             tableRows,
-            { opacity: [0, 1], y: [8, 0] },
-            { delay: stagger(0.03, { start: 0.15 }), duration: 0.35, ease: 'easeOut' }
+            { opacity: [0, 1], y: [6, 0] },
+            { delay: stagger(0.025, { start: 0.12 }), duration: 0.3, ease: 'easeOut' }
         );
     }
 
-    // Form or Card Surface Fade In
-    const mainCards = document.querySelectorAll('.surface-card-fade');
-    if (mainCards.length > 0) {
+    // 4. Main Surface Cards / Sections Fade & Slide In
+    const surfaceCards = document.querySelectorAll('.surface-card-fade');
+    if (surfaceCards.length > 0) {
         animate(
-            mainCards,
-            { opacity: [0, 1], y: [12, 0] },
-            { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+            surfaceCards,
+            { opacity: [0, 1], y: [10, 0] },
+            { duration: 0.38, ease: [0.16, 1, 0.3, 1] }
         );
     }
 }
@@ -132,24 +144,32 @@ window.fillDemoCredentials = function(email, password) {
         emailInput.value = email;
         passwordInput.value = password;
         
-        // Highlight inputs briefly
-        animate(
-            [emailInput, passwordInput],
-            { borderColor: ['#0284c7', '#e2e8f0'] },
-            { duration: 0.8 }
-        );
+        // Highlight inputs smoothly with Framer Motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReducedMotion) {
+            animate(
+                [emailInput, passwordInput],
+                { borderColor: ['#0284c7', '#bae6fd', '#e2e8f0'], scale: [0.99, 1] },
+                { duration: 0.5, ease: 'easeOut' }
+            );
+        }
     }
 };
 
-// Copy Patient Reference or Case Number
+// Copy Patient Reference or Case Number with visual feedback
 window.copyToClipboard = function(text, element) {
     if (!navigator.clipboard) return;
     navigator.clipboard.writeText(text).then(() => {
-        const originalText = element.getAttribute('data-original-title') || element.innerHTML;
-        element.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 inline"></i> Copied!';
+        const originalContent = element.getAttribute('data-original-html') || element.innerHTML;
+        if (!element.getAttribute('data-original-html')) {
+            element.setAttribute('data-original-html', originalContent);
+        }
+        
+        element.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 inline"></i> <span class="text-emerald-700 text-[11px] font-semibold">Copied!</span>';
         initIcons();
+        
         setTimeout(() => {
-            element.innerHTML = originalText;
+            element.innerHTML = element.getAttribute('data-original-html');
             initIcons();
         }, 1800);
     });
@@ -204,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = form.querySelector('button[type="submit"]');
             if (submitBtn && !submitBtn.disabled) {
                 submitBtn.disabled = true;
-                const originalHtml = submitBtn.innerHTML;
                 submitBtn.innerHTML = `
                     <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

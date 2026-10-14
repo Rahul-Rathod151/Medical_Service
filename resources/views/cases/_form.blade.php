@@ -1,9 +1,11 @@
 <div class="space-y-6">
     <!-- Section 1: Identification -->
     <div>
-        <div class="flex items-center gap-2 pb-2 mb-3 border-b border-slate-100">
-            <i data-lucide="folder-kanban" class="w-4 h-4 text-sky-600"></i>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 font-heading mb-0">
+        <div class="flex items-center gap-2 pb-2 mb-3.5 border-b border-slate-100">
+            <div class="w-6 h-6 rounded-md bg-sky-50 text-sky-600 flex items-center justify-center">
+                <i data-lucide="folder-kanban" class="w-3.5 h-3.5"></i>
+            </div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 font-heading mb-0">
                 1. Case Identification & Patient Token
             </h3>
         </div>
@@ -24,7 +26,7 @@
                            required>
                 </div>
                 @error('case_number')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -48,7 +50,7 @@
                            required>
                 </div>
                 @error('patient_reference')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -61,9 +63,11 @@
 
     <!-- Section 2: Clinical Team & Device -->
     <div>
-        <div class="flex items-center gap-2 pb-2 mb-3 border-b border-slate-100">
-            <i data-lucide="stethoscope" class="w-4 h-4 text-sky-600"></i>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 font-heading mb-0">
+        <div class="flex items-center gap-2 pb-2 mb-3.5 border-b border-slate-100">
+            <div class="w-6 h-6 rounded-md bg-sky-50 text-sky-600 flex items-center justify-center">
+                <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
+            </div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 font-heading mb-0">
                 2. Clinical Team & Custom Implant
             </h3>
         </div>
@@ -82,7 +86,7 @@
                        placeholder="e.g. Dr. Rajesh Jajal, MD"
                        required>
                 @error('surgeon_name')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -102,7 +106,7 @@
                        placeholder="e.g. Titanium Cranial Mesh, PEEK Vertebral Cage"
                        required>
                 @error('implant_type')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -113,9 +117,11 @@
 
     <!-- Section 3: Workflow, Priority & Schedule -->
     <div>
-        <div class="flex items-center gap-2 pb-2 mb-3 border-b border-slate-100">
-            <i data-lucide="calendar" class="w-4 h-4 text-sky-600"></i>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 font-heading mb-0">
+        <div class="flex items-center gap-2 pb-2 mb-3.5 border-b border-slate-100">
+            <div class="w-6 h-6 rounded-md bg-sky-50 text-sky-600 flex items-center justify-center">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            </div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 font-heading mb-0">
                 3. Lifecycle Stage & Logistics
             </h3>
         </div>
@@ -135,7 +141,7 @@
                     @endforeach
                 </select>
                 @error('status')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -156,7 +162,7 @@
                     @endforeach
                 </select>
                 @error('priority')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -174,7 +180,7 @@
                        class="form-control-saas @error('surgery_date') is-invalid @enderror"
                        value="{{ old('surgery_date', $case->surgery_date ? $case->surgery_date->format('Y-m-d') : '') }}">
                 @error('surgery_date')
-                    <div class="text-xs text-rose-600 font-medium mt-1 flex items-center gap-1">
+                    <div class="text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1.5">
                         <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
                         <span>{{ $message }}</span>
                     </div>
@@ -186,13 +192,13 @@
     </div>
 
     <!-- Security & Audit Trail Banner -->
-    <div class="p-3.5 bg-slate-50 border border-slate-200/80 rounded-xl flex items-start gap-3 text-xs text-slate-600">
+    <div class="p-4 bg-slate-50/80 border border-slate-200/80 rounded-xl flex items-start gap-3 text-xs text-slate-600">
         <div class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center shrink-0 mt-0.5">
             <i data-lucide="shield-check" class="w-4 h-4"></i>
         </div>
         <div>
             <strong class="text-slate-800">Automated Audit Governance:</strong>
-            The <code>created_by</code> record is cryptographically verified to the authenticated administrator (<strong>{{ Auth::user()->name }}</strong>). On updates, the original case creator cannot be overwritten.
+            The <code>created_by</code> record is cryptographically verified to the authenticated administrator (<strong>{{ Auth::user()->name }}</strong>). On updates, the originating case author cannot be overwritten.
         </div>
     </div>
 </div>

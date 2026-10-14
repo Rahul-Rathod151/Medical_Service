@@ -1,4 +1,4 @@
-# Design System Master File
+# Design System Master File: Jajal Medical
 
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
@@ -6,210 +6,60 @@
 
 ---
 
-**Project:** Jajal Medical
-**Generated:** 2026-10-14 13:10:36
-**Category:** Healthcare App
+**Project:** Jajal Medical Case Management
+**Category:** Healthcare SaaS / Clinical Surgical Implant Portal
+**Design Standard:** UI UX Pro Max Healthcare SaaS Specification
 
 ---
 
-## Global Rules
+## 1. Global Visual Rules
 
-### Color Palette
+### Color Palette (Clean Clinical Light Theme)
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#0891B2` | `--color-primary` |
-| On Primary | `#000000` | `--color-on-primary` |
-| Secondary | `#22D3EE` | `--color-secondary` |
-| On Secondary | `#0F172A` | `--color-on-secondary` |
-| Accent/CTA | `#059669` | `--color-accent` |
-| On Accent/CTA | `#000000` | `--color-on-accent` |
-| Background | `#ECFEFF` | `--color-background` |
-| Foreground | `#164E63` | `--color-foreground` |
-| Card | `#FFFFFF` | `--color-card` |
-| Card Foreground | `#164E63` | `--color-card-foreground` |
-| Muted | `#E8F1F6` | `--color-muted` |
-| Muted Foreground | `#475569` | `--color-muted-foreground` |
-| Border | `#A5F3FC` | `--color-border` |
-| Destructive | `#DC2626` | `--color-destructive` |
-| On Destructive | `#FFFFFF` | `--color-on-destructive` |
-| Ring | `#0891B2` | `--color-ring` |
-
-**Color Notes:** Calm cyan + health green
+| Role | Hex | CSS Variable | Usage |
+|------|-----|--------------|-------|
+| Primary | `#0284C7` | `--color-primary` | Primary clinical actions, active states, brand headers |
+| Primary Dark | `#0369A1` | `--color-primary-dark` | Hover states, active links, emphasized text |
+| Primary Light | `#F0F9FF` | `--color-primary-light` | Active background tints, subtle badges |
+| Secondary | `#0D9488` | `--color-secondary` | Surgical accents, ISO compliance badges |
+| Background | `#F8FAFC` | `--color-background` | Application canvas, clean off-white |
+| Surface / Card | `#FFFFFF` | `--color-surface` | Pure white cards, modals, table surfaces |
+| Border | `#E2E8F0` | `--color-border` | Hairline dividers, card outlines |
+| Text Main | `#0F172A` | `--color-text-main` | High-contrast headings and body text |
+| Text Muted | `#475569` | `--color-text-muted` | Accessible secondary labels (>= 4.5:1 ratio) |
+| Destructive | `#DC2626` | `--color-destructive` | Permanent actions, deletion alerts |
 
 ### Typography
 
-- **Heading Font:** Figtree
-- **Body Font:** Noto Sans
-- **Mood:** medical, clean, accessible, professional, healthcare, trustworthy
-- **Google Fonts:** [Figtree + Noto Sans](https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap)
+- **Heading Font:** `Figtree` (Weights: 600, 700, 800)
+- **Body Font:** `Inter` (Weights: 400, 500, 600)
+- **Monospace Font:** `JetBrains Mono` (Weights: 400, 500, 600) for Patient Reference tokens, Case Numbers, timestamps.
+- **Mood:** Clinical, trustworthy, precision engineering, accessible, institutional credibility.
 
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;700&display=swap');
-```
-
-### Spacing Variables
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
-
-### Shadow Depths
+### Shadow Depths & Elevations
 
 | Level | Value | Usage |
 |-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+| `--shadow-subtle` | `0 1px 2px 0 rgba(15, 23, 42, 0.04)` | Form controls, small badges |
+| `--shadow-card` | `0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03)` | KPI cards, data table wrappers |
+| `--shadow-card-hover` | `0 10px 20px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.04)` | Lifted interactive cards on hover |
+| `--shadow-modal` | `0 25px 50px -12px rgba(15, 23, 42, 0.25)` | Confirmation dialogs, overlay panels |
 
 ---
 
-## Component Specs
+## 2. Motion & Interaction Standards (Framer Motion)
 
-### Buttons
-
-```css
-/* Primary Button */
-.btn-primary {
-  background: #059669;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #0891B2;
-  border: 2px solid #0891B2;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
-
-### Cards
-
-```css
-.card {
-  background: #ECFEFF;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #0891B2;
-  outline: none;
-  box-shadow: 0 0 0 3px #0891B220;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
+- **Library:** `motion` (`animate`, `stagger`)
+- **Stagger entrances:** 30–50ms delays on metric cards and table rows for progressive perception.
+- **Micro-transitions:** 150–220ms ease `[0.16, 1, 0.3, 1]` for hover elevation and active press.
+- **Reduced motion:** Automatic detection via `(prefers-reduced-motion: reduce)` disables all transforms.
 
 ---
 
-## Style Guidelines
+## 3. Anti-Patterns (Forbidden)
 
-**Style:** Neumorphism
-
-**Keywords:** Soft UI, embossed, debossed, convex, concave, light source, subtle depth, rounded (12-16px), monochromatic
-
-**Best For:** Health/wellness apps, meditation platforms, fitness trackers, minimal interaction UIs
-
-**Key Effects:** Soft box-shadow (multiple: -5px -5px 15px, 5px 5px 15px), smooth press (150ms), inner subtle shadow
-
-### Page Pattern
-
-**Pattern Name:** Hero + Testimonials + CTA
-
-- **Conversion Strategy:** Social proof before CTA. Use a concise set of verified testimonials with photo, name, and role. CTA after social proof. Provide previous/next and pause controls; stop rotation on focus, hover, and reduced motion; announce slide position. Previous/next buttons and keyboard controls must expose every slide without dragging.
-- **CTA Placement:** Hero (sticky) + Post-testimonials
-- **Section Order:** Hero > Problem statement > Solution overview > Testimonials carousel > CTA
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Bright neon colors
-- ❌ Motion-heavy animations
-- ❌ AI purple/pink gradients
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- ❌ **No Emojis as Structural Icons** — Use Lucide vector icons exclusively.
+- ❌ **No Missing cursor-pointer** — Every clickable element must exhibit pointer behavior.
+- ❌ **No Layout-shifting Hovers** — Avoid scale transforms that disrupt adjacent container boundaries.
+- ❌ **No Low-Contrast Text** — Keep all primary and secondary text above 4.5:1 WCAG AA.
+- ❌ **No Dark Mode Force** — Strictly maintain clean, sterile, clinical white/slate light mode.

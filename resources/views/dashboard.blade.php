@@ -5,15 +5,15 @@
 @section('content')
 <div class="space-y-6">
     <!-- Page Header & Contextual Actions -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-1">
         <div>
-            <div class="flex items-center gap-2 mb-1">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sky-100 text-sky-800 uppercase tracking-wider">
+            <div class="flex items-center gap-2 mb-1.5">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-sky-100/80 text-sky-800 uppercase tracking-widest border border-sky-200/60">
                     Operations Center
                 </span>
                 <span class="text-xs text-slate-400 font-medium">{{ now()->format('l, F j, Y') }}</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-heading">
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-heading">
                 Medical Cases Overview
             </h1>
             <p class="text-sm text-slate-500 mt-1 max-w-2xl">
@@ -27,7 +27,7 @@
                 <span>Directory</span>
             </a>
             @can('create', App\Models\MedicalCase::class)
-            <a href="{{ route('cases.create') }}" class="btn-primary-saas text-xs">
+            <a href="{{ route('cases.create') }}" class="btn-primary-saas text-xs shadow-sm">
                 <i data-lucide="plus" class="w-4 h-4"></i>
                 <span>Create Case</span>
             </a>
@@ -40,14 +40,14 @@
         <!-- Total Cases -->
         <a href="{{ route('cases.index') }}" class="kpi-card kpi-total text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider">Total Cases</span>
-                <div class="w-7 h-7 rounded-md bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total Cases</span>
+                <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="layers" class="w-4 h-4"></i>
                 </div>
             </div>
             <div class="flex items-baseline justify-between">
                 <span class="text-2xl sm:text-3xl font-black text-slate-900 font-heading font-mono-code">{{ $counts['total'] }}</span>
-                <span class="text-[10px] text-sky-600 font-semibold flex items-center group-hover:translate-x-0.5 transition-transform">
+                <span class="text-[10px] text-sky-600 font-bold flex items-center group-hover:translate-x-0.5 transition-transform">
                     All <i data-lucide="chevron-right" class="w-3 h-3 inline"></i>
                 </span>
             </div>
@@ -56,8 +56,8 @@
         <!-- Planning -->
         <a href="{{ route('cases.index', ['status' => 'Planning']) }}" class="kpi-card kpi-planning text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Planning</span>
-                <div class="w-7 h-7 rounded-md bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700">Planning</span>
+                <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -70,8 +70,8 @@
         <!-- In Review -->
         <a href="{{ route('cases.index', ['status' => 'In Review']) }}" class="kpi-card kpi-review text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-amber-700">In Review</span>
-                <div class="w-7 h-7 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">In Review</span>
+                <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="eye" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -84,8 +84,8 @@
         <!-- Approved -->
         <a href="{{ route('cases.index', ['status' => 'Approved']) }}" class="kpi-card kpi-approved text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-700">Approved</span>
-                <div class="w-7 h-7 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Approved</span>
+                <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="check-circle" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -98,8 +98,8 @@
         <!-- Completed -->
         <a href="{{ route('cases.index', ['status' => 'Completed']) }}" class="kpi-card kpi-completed text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-teal-700">Completed</span>
-                <div class="w-7 h-7 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-teal-700">Completed</span>
+                <div class="w-7 h-7 rounded-lg bg-teal-50 text-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="check-circle-2" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -112,8 +112,8 @@
         <!-- Drafts -->
         <a href="{{ route('cases.index', ['status' => 'Draft']) }}" class="kpi-card kpi-draft text-decoration-none group">
             <div class="flex items-center justify-between text-slate-500 mb-2">
-                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-600">Drafts</span>
-                <div class="w-7 h-7 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-600">Drafts</span>
+                <div class="w-7 h-7 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <i data-lucide="file-text" class="w-4 h-4"></i>
                 </div>
             </div>
@@ -125,42 +125,44 @@
     </div>
 
     <!-- Surgical Workflow Funnel Overview -->
-    <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 shadow-xs surface-card-fade">
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-card surface-card-fade">
         <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2">
-                <i data-lucide="activity" class="w-4 h-4 text-sky-600"></i>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 mb-0 font-heading">
+                <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                    <i data-lucide="activity" class="w-4 h-4"></i>
+                </div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 mb-0 font-heading">
                     Surgical Case Lifecycle Pipeline
                 </h3>
             </div>
-            <span class="text-xs text-slate-400">Active Patient Distribution</span>
+            <span class="text-xs text-slate-400 font-medium">Active Patient Distribution</span>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1 text-center">
-            <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200/60">
-                <div class="text-[10px] font-bold uppercase text-slate-500 tracking-wider">1. Draft</div>
-                <div class="text-lg font-bold text-slate-800 font-mono-code mt-0.5">{{ $counts['draft'] }}</div>
-                <div class="text-[10px] text-slate-400">Intake Data</div>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 pt-1 text-center">
+            <div class="funnel-step-item p-3 rounded-xl bg-slate-50 border border-slate-200/70">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500">1. Draft</div>
+                <div class="text-xl font-bold text-slate-800 font-mono-code mt-0.5">{{ $counts['draft'] }}</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Intake Data</div>
             </div>
-            <div class="p-2.5 rounded-lg bg-sky-50 border border-sky-100">
-                <div class="text-[10px] font-bold uppercase text-sky-700 tracking-wider">2. Planning</div>
-                <div class="text-lg font-bold text-sky-800 font-mono-code mt-0.5">{{ $counts['planning'] }}</div>
-                <div class="text-[10px] text-sky-600/80">3D CAD Modeling</div>
+            <div class="funnel-step-item p-3 rounded-xl bg-sky-50/70 border border-sky-100">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-sky-700">2. Planning</div>
+                <div class="text-xl font-bold text-sky-800 font-mono-code mt-0.5">{{ $counts['planning'] }}</div>
+                <div class="text-[10px] text-sky-600/90 mt-0.5">3D CAD Modeling</div>
             </div>
-            <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-100">
-                <div class="text-[10px] font-bold uppercase text-amber-700 tracking-wider">3. In Review</div>
-                <div class="text-lg font-bold text-amber-800 font-mono-code mt-0.5">{{ $counts['in_review'] }}</div>
-                <div class="text-[10px] text-amber-600/80">Biomechanical Audit</div>
+            <div class="funnel-step-item p-3 rounded-xl bg-amber-50/70 border border-amber-100">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-amber-700">3. In Review</div>
+                <div class="text-xl font-bold text-amber-800 font-mono-code mt-0.5">{{ $counts['in_review'] }}</div>
+                <div class="text-[10px] text-amber-600/90 mt-0.5">Biomechanical Audit</div>
             </div>
-            <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100">
-                <div class="text-[10px] font-bold uppercase text-emerald-700 tracking-wider">4. Approved</div>
-                <div class="text-lg font-bold text-emerald-800 font-mono-code mt-0.5">{{ $counts['approved'] }}</div>
-                <div class="text-[10px] text-emerald-600/80">Sterile CNC Milling</div>
+            <div class="funnel-step-item p-3 rounded-xl bg-emerald-50/70 border border-emerald-100">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">4. Approved</div>
+                <div class="text-xl font-bold text-emerald-800 font-mono-code mt-0.5">{{ $counts['approved'] }}</div>
+                <div class="text-[10px] text-emerald-600/90 mt-0.5">Sterile CNC Milling</div>
             </div>
-            <div class="p-2.5 rounded-lg bg-teal-50 border border-teal-100">
-                <div class="text-[10px] font-bold uppercase text-teal-700 tracking-wider">5. Completed</div>
-                <div class="text-lg font-bold text-teal-800 font-mono-code mt-0.5">{{ $counts['completed'] }}</div>
-                <div class="text-[10px] text-teal-600/80">Surgery Implanted</div>
+            <div class="funnel-step-item p-3 rounded-xl bg-teal-50/70 border border-teal-100">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-teal-700">5. Completed</div>
+                <div class="text-xl font-bold text-teal-800 font-mono-code mt-0.5">{{ $counts['completed'] }}</div>
+                <div class="text-[10px] text-teal-600/90 mt-0.5">Surgery Implanted</div>
             </div>
         </div>
     </div>
@@ -235,7 +237,7 @@
                                 {{ $case->priority }}
                             </span>
                         </td>
-                        <td class="text-xs text-slate-600">
+                        <td class="text-xs text-slate-600 whitespace-nowrap">
                             @if($case->surgery_date)
                             <div class="flex items-center gap-1.5 font-medium">
                                 <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
@@ -245,16 +247,16 @@
                             <span class="text-slate-400 italic">Not scheduled</span>
                             @endif
                         </td>
-                        <td class="text-end pe-5">
+                        <td class="text-end pe-5 whitespace-nowrap">
                             <div class="inline-flex items-center gap-1">
                                 <a href="{{ route('cases.show', $case) }}" 
-                                   class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-md transition-colors" 
+                                   class="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer" 
                                    title="View case details">
                                     <i data-lucide="eye" class="w-4 h-4"></i>
                                 </a>
                                 @can('update', $case)
                                 <a href="{{ route('cases.edit', $case) }}" 
-                                   class="p-1.5 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-md transition-colors" 
+                                   class="p-1.5 text-slate-500 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors cursor-pointer" 
                                    title="Edit medical case">
                                     <i data-lucide="pencil" class="w-4 h-4"></i>
                                 </a>
@@ -268,7 +270,7 @@
                             <div class="w-12 h-12 rounded-full bg-slate-100 mx-auto flex items-center justify-center text-slate-400 mb-3">
                                 <i data-lucide="folder-open" class="w-6 h-6"></i>
                             </div>
-                            <p class="font-semibold text-slate-700 text-sm mb-1">No medical cases recorded yet</p>
+                            <p class="font-bold text-slate-700 text-sm mb-1">No medical cases recorded yet</p>
                             <p class="text-xs text-slate-400 mb-3">Create your first patient-specific implant case to start the clinical pipeline.</p>
                             @can('create', App\Models\MedicalCase::class)
                             <a href="{{ route('cases.create') }}" class="btn-primary-saas text-xs py-1.5 px-3">

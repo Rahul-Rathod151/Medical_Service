@@ -12,11 +12,11 @@
                 <span>Back to Case Details</span>
             </a>
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shadow-2xs border border-sky-100">
                     <i data-lucide="pencil" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight font-heading mb-0">
+                    <h1 class="text-2xl font-black text-slate-900 tracking-tight font-heading mb-0">
                         Edit Case: <span class="font-mono-code">{{ $case->case_number }}</span>
                     </h1>
                     <p class="text-xs text-slate-500 mt-0.5">Update clinical stage, surgical schedule, or specifications.</p>
@@ -33,8 +33,8 @@
     </div>
 
     <!-- Form Container Card -->
-    <div class="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden surface-card-fade">
-        <div class="p-6">
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-card overflow-hidden surface-card-fade">
+        <div class="p-6 sm:p-7">
             <form method="POST" action="{{ route('cases.update', $case) }}" novalidate data-loading-on-submit>
                 @csrf
                 @method('PUT')
@@ -45,7 +45,7 @@
                     <a href="{{ route('cases.show', $case) }}" class="btn-secondary-saas text-xs">
                         Cancel
                     </a>
-                    <button type="submit" class="btn-primary-saas text-xs">
+                    <button type="submit" class="btn-primary-saas text-xs shadow-sm">
                         <i data-lucide="check" class="w-4 h-4"></i>
                         <span>Update Medical Case</span>
                     </button>

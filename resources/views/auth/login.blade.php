@@ -3,10 +3,10 @@
 @section('title', 'Sign In')
 
 @section('content')
-<div class="w-full max-w-md mx-auto px-4 py-8">
+<div class="w-full max-w-md mx-auto px-4 py-10">
     <!-- Brand Badge & Heading -->
     <div class="text-center mb-6">
-        <div class="inline-flex w-12 h-12 rounded-xl bg-gradient-to-br from-sky-600 to-teal-600 items-center justify-center text-white shadow-md shadow-sky-600/20 mb-3">
+        <div class="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-br from-sky-600 to-teal-600 items-center justify-center text-white shadow-md shadow-sky-600/25 mb-3">
             <i data-lucide="hospital" class="w-6 h-6"></i>
         </div>
         <h1 class="text-2xl font-black text-slate-900 tracking-tight font-heading">
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Main Card -->
-    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm surface-card-fade">
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-card surface-card-fade">
         @if ($errors->any())
         <div class="mb-5 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs">
             <div class="flex items-center gap-2 font-bold mb-1">
@@ -39,7 +39,7 @@
             <!-- Email Address -->
             <div>
                 <label for="email" class="block text-xs font-bold text-slate-700 mb-1.5">
-                    Authorized Email Address
+                    Authorized Clinical Email
                 </label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -76,7 +76,7 @@
                            required>
                     <button type="button" 
                             onclick="togglePasswordVisibility()" 
-                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600"
+                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
                             aria-label="Toggle password view">
                         <i data-lucide="eye" id="passwordEyeIcon" class="w-4 h-4"></i>
                     </button>
@@ -86,13 +86,13 @@
             <!-- Remember Me -->
             <div class="flex items-center justify-between pt-1">
                 <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-600">
-                    <input type="checkbox" id="remember" name="remember" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500">
+                    <input type="checkbox" id="remember" name="remember" class="rounded border-slate-300 text-sky-600 focus:ring-sky-500 cursor-pointer">
                     <span>Remember this workstation</span>
                 </label>
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn-primary-saas w-full py-2.5 text-sm mt-2">
+            <button type="submit" class="btn-primary-saas w-full py-2.5 text-sm mt-2 shadow-sm">
                 <i data-lucide="log-out" class="w-4 h-4 rotate-180"></i>
                 <span>Sign In to Clinical Portal</span>
             </button>
@@ -100,29 +100,29 @@
 
         <!-- Quick Demo Credentials Selector -->
         <div class="mt-6 pt-5 border-t border-slate-100">
-            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5 text-center">
+            <div class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2.5 text-center">
                 Instant Demo Access (Click to autofill)
             </div>
             
             <div class="grid grid-cols-2 gap-2">
                 <button type="button" 
                         onclick="fillDemoCredentials('admin@jajalmedical.com', 'Admin@12345')"
-                        class="p-2.5 rounded-lg bg-sky-50 hover:bg-sky-100 border border-sky-100 text-left transition-colors group">
+                        class="p-2.5 rounded-xl bg-sky-50/70 hover:bg-sky-100/70 border border-sky-100 text-left transition-colors group cursor-pointer">
                     <div class="flex items-center justify-between mb-0.5">
                         <span class="text-xs font-bold text-sky-900">Admin</span>
-                        <span class="text-[9px] bg-sky-600 text-white px-1.5 py-0.2 rounded font-semibold uppercase">Full CRUD</span>
+                        <span class="text-[9px] bg-sky-600 text-white px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">Full CRUD</span>
                     </div>
-                    <span class="text-[10px] text-sky-600 font-mono-code block truncate">admin@jajalmedical.com</span>
+                    <span class="text-[10px] text-sky-700 font-mono-code block truncate">admin@jajalmedical.com</span>
                 </button>
 
                 <button type="button" 
                         onclick="fillDemoCredentials('viewer@jajalmedical.com', 'Viewer@12345')"
-                        class="p-2.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-colors group">
+                        class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-colors group cursor-pointer">
                     <div class="flex items-center justify-between mb-0.5">
                         <span class="text-xs font-bold text-slate-800">Viewer</span>
-                        <span class="text-[9px] bg-slate-200 text-slate-600 px-1.5 py-0.2 rounded font-semibold uppercase">Read Only</span>
+                        <span class="text-[9px] bg-slate-200 text-slate-700 px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">Read Only</span>
                     </div>
-                    <span class="text-[10px] text-slate-500 font-mono-code block truncate">viewer@jajalmedical.com</span>
+                    <span class="text-[10px] text-slate-600 font-mono-code block truncate">viewer@jajalmedical.com</span>
                 </button>
             </div>
         </div>
